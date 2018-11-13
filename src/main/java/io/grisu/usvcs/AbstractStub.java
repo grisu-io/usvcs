@@ -42,7 +42,7 @@ public abstract class AbstractStub {
 
     protected <R> CompletableFuture<R> call(Method invokingMethod, Object... params) {
         try {
-            return (CompletableFuture<R>) client.send(serviceQueue,
+            return client.send(serviceQueue,
                 nServicesHandlers.get(ReflectionUtils.computeSignatureHash(invokingMethod)),
                 invokingMethod.getGenericReturnType(),
                 params);
